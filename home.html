@@ -1,0 +1,200 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swad Sutra - Find Affordable Dining</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="nav-left">
+            <h1 class="logo">🍽️ SWAD SUTRA</h1>
+        </div>
+        <div class="nav-right">
+            <ul>
+                <li><a href="#" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="index.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                <li><a href="#" class="signup-btn"><i class="fas fa-user-plus"></i> Sign Up</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Welcome to <span id="text" class="highlight"></span></h1>
+            <p class="hero-subtitle">Discover local affordable dining experiences tailored to your taste and budget</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <i class="fas fa-utensils"></i>
+                    <span>25+ Restaurants</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-star"></i>
+                    <span>4.3+ Avg Rating</span>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>10km Range</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-cta">
+            <button class="scroll-to-search">
+                <i class="fas fa-search"></i> Find Your Next Meal
+            </button>
+        </div>
+    </section>
+
+    <!-- Quick Filters -->
+    <section class="quick-filters">
+        <div class="quick-filter-container">
+            <button class="quick-filter" data-cuisine="All">
+                <i class="fas fa-globe"></i> All
+            </button>
+            <button class="quick-filter" data-cuisine="Indian">
+                <i class="fas fa-pepper-hot"></i> Indian
+            </button>
+            <button class="quick-filter" data-cuisine="Italian">
+                <i class="fas fa-pizza-slice"></i> Italian
+            </button>
+            <button class="quick-filter" data-cuisine="Japanese">
+                <i class="fas fa-fish"></i> Japanese
+            </button>
+            <button class="quick-filter" data-cuisine="Cafe">
+                <i class="fas fa-coffee"></i> Cafe
+            </button>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section" id="search-section">
+        <div class="header">
+            <h2><i class="fas fa-filter"></i> Smart Filters</h2>
+            <div class="filter-actions">
+                <span class="results-count">25 restaurants found</span>
+                <button class="filter-button" onclick="clearFilters()">
+                    <i class="fas fa-redo"></i> Reset Filters
+                </button>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-input" placeholder="Search for restaurants...">
+            <button class="search-clear" style="display: none;">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="filter-grid">
+            <div class="filter-group">
+                <label class="filterlabel"><i class="fas fa-dollar-sign"></i> Price Range</label>
+                <select class="filter-select">
+                    <option value="All Prices">All Prices</option>
+                    <option value="$">$ (Under $10)</option>
+                    <option value="$$">$$ (Under $20)</option>
+                    <option value="$$$">$$$ (Under $30)</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filterlabel"><i class="fas fa-hamburger"></i> Cuisine</label>
+                <select class="filter-select">
+                    <option value="All Cuisine">All Cuisines</option>
+                    <option value="Cafe">Cafe</option>
+                    <option value="Indian">Indian</option>
+                    <option value="Japanese">Japanese</option>
+                    <option value="Italian">Italian</option>
+                    <option value="Fast Food">Fast Food</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filterlabel"><i class="fas fa-route"></i> Distance</label>
+                <select class="filter-select">
+                    <option value="Infinity">All Distances</option>
+                    <option value="1">Under 1 km</option>
+                    <option value="5">Under 5 km</option>
+                    <option value="10">Under 10 km</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label class="filterlabel"><i class="fas fa-star"></i> Rating</label>
+                <select class="filter-select">
+                    <option value="0">All Ratings</option>
+                    <option value="4.5">4.5+ Stars</option>
+                    <option value="4.0">4.0+ Stars</option>
+                    <option value="3.0">3.0+ Stars</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restaurant List Section -->
+    <section class="restaurants">
+        <div class="restaurant-grid">
+            <table>
+                <thead>
+                    <tr>
+                        <th><i class="fas fa-store"></i> Restaurant</th>
+                        <th><i class="fas fa-tag"></i> Price</th>
+                        <th><i class="fas fa-utensils"></i> Cuisine</th>
+                        <th><i class="fas fa-map-marker-alt"></i> Distance</th>
+                        <th><i class="fas fa-star"></i> Rating</th>
+                    </tr>
+                </thead>
+                <tbody id="restaurantTableBody">
+                    <!-- Rows will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        <div class="no-results" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h3>No restaurants found</h3>
+            <p>Try adjusting your filters or search terms</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Swad Sutra</h3>
+                <p>Helping you discover affordable dining experiences in your area.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Swad Sutra. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="restaurantdata.js"></script>
+    <script src="script.js"></script>
+    <script src="restaurant.js"></script>
+</body>
+
+</html>
